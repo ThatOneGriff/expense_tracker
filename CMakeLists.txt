@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(task_tracker VERSION 1.0 LANGUAGES CXX)
+project(expense_tracker VERSION 1.0 LANGUAGES CXX)
 
 # libraries
 set(JSON_Install OFF CACHE INTERNAL "")
