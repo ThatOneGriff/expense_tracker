@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/Артём/Documents/pet projects/expense_tracker/build",
+  "command": "C:\\TDM-GCC-64\\bin\\c++.exe -I\"C:/Users/Артём/Documents/pet projects/expense_tracker/include/nlohmann_json/include\" -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles\\expense_tracker.dir\\main.cpp.obj -c \"C:\\Users\\Артём\\Documents\\pet projects\\expense_tracker\\main.cpp\"",
+  "file": "C:\\Users\\Артём\\Documents\\pet projects\\expense_tracker\\main.cpp",
+  "output": "CMakeFiles\\expense_tracker.dir\\main.cpp.obj"
+}
+]
