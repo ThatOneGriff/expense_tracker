@@ -1003,7 +1003,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "task_tracker"
+			"value" : "expense_tracker"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -1636,6 +1636,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "C:/Program Files (x86)/task_tracker"
+		},
+		{
+			"name" : "expense_tracker_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/\u0410\u0440\u0442\u0451\u043c/Documents/pet projects/expense_tracker/build"
+		},
+		{
+			"name" : "expense_tracker_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "expense_tracker_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/\u0410\u0440\u0442\u0451\u043c/Documents/pet projects/expense_tracker"
 		},
 		{
 			"name" : "nlohmann_json_BINARY_DIR",

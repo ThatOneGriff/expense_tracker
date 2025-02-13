@@ -176,7 +176,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=task_tracker
+CMAKE_PROJECT_NAME:STATIC=expense_tracker
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=1.0
@@ -305,6 +305,15 @@ JSON_MultipleHeaders:BOOL=ON
 
 //Include as system headers (skip for clang-tidy).
 JSON_SystemInclude:BOOL=OFF
+
+//Value Computed by CMake
+expense_tracker_BINARY_DIR:STATIC=C:/Users/Артём/Documents/pet projects/expense_tracker/build
+
+//Value Computed by CMake
+expense_tracker_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+expense_tracker_SOURCE_DIR:STATIC=C:/Users/Артём/Documents/pet projects/expense_tracker
 
 //Value Computed by CMake
 nlohmann_json_BINARY_DIR:STATIC=C:/Users/Артём/Documents/pet projects/expense_tracker/build/include/nlohmann_json
