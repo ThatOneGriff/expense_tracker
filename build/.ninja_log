@@ -1,3 +1,7 @@
 # ninja log v5
 3	335	7601028854684404	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
 338	730	7601028858584678	expense_tracker.exe	3bd1075691d128db
+20	471	7615603428375489	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+472	1110	7615603434616810	expense_tracker.exe	3bd1075691d128db
+29	337	7615603850065534	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+338	756	7615603854136587	expense_tracker.exe	3bd1075691d128db

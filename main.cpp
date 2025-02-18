@@ -1,16 +1,13 @@
 #include <iostream>
-using namespace std;
 
 
-/*  */
-
-
+/* = TODO =
+- Structure
+*/
 
 int main()
 {
     std::cout << "Hello, World!";
-    int temp;
-    std::cin >> temp;
 
     return 0;
 }
