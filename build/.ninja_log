@@ -1,3 +1,17 @@
 # ninja log v5
 29	337	7615603850065534	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
 338	756	7615603854136587	expense_tracker.exe	3bd1075691d128db
+41	437	7630746426419524	libhelper.a	5c32e643fa10cf8f
+27	438	7630746426419524	libexpense.a	b06a25b02a9cc63f
+17	650	7630781723069276	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+650	1387	7630781730377130	expense_tracker.exe	de34f1e6ff79d355
+30	489	7630782694023460	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+490	949	7630782698545350	expense_tracker.exe	de34f1e6ff79d355
+31	445	7630783614645955	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+446	959	7630783619675089	expense_tracker.exe	de34f1e6ff79d355
+21	536	7630791823882910	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+536	1020	7630791828681682	expense_tracker.exe	de34f1e6ff79d355
+17	386	7630793703490993	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+16	382	7630793772335059	expense_tracker.exe	de34f1e6ff79d355
+10	388	7630801671953180	CMakeFiles/expense_tracker.dir/main.cpp.obj	ff3cfccfbf99800a
+18	418	7630801717379614	expense_tracker.exe	de34f1e6ff79d355

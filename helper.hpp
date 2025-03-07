@@ -23,7 +23,7 @@ void lower(std::string& str)
 
 
 
-// Never do you negative numbers in this program, so min return is always 0 EXCEPT for errors
+// Тegative numbers in this program are never needed, so minimal return is always 0
 int limit(const int target, const int max = __INT_MAX__)
 {
     if (target < 0) return 0;
