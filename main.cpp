@@ -50,45 +50,25 @@ int main()
 
 
 
-// TODO: Streamline this function. Maybe add a 'must_save' bool.
 void distribute_unprocessed_input()
 {
-    int var_id = 0;
-    std::string curr_val;
-    bool open_parentheses = false;
-    for (int i = 0; i < unprocessed_input.size() && var_id < INPUT_VAR_AMOUNT; i++)
+    std::stringstream unprocessed_stream(unprocessed_input);
+    std::string word;
+    bool parentheses_open = false;
+    int i = 0;
+    while (unprocessed_stream >> word && i < 4)
     {
-        bool ready_to_save = false;
-        if (unprocessed_input[i] == '"')
+        if (word[0] == '"')
         {
-            open_parentheses = ! open_parentheses;
-            if (! open_parentheses)
-                ready_to_save = true;
-            else
-                continue;
+            parentheses_open = true;
+            processed_input[i] += word;
+            continue;
         }
-
-        if (unprocessed_input[i] == ' ')
-        {
-            if (open_parentheses)
-                curr_val += unprocessed_input[i];
-            else if (curr_val != "")
-                ready_to_save = true;
-        }
-
-        if (i == unprocessed_input.size() - 1)
-        {
-            curr_val += unprocessed_input[i];
-            ready_to_save = true;
-        }
-
-        if (ready_to_save)
-        {
-            processed_input[var_id++] = curr_val;
-            curr_val = "";
-        }
-        else
-            curr_val += unprocessed_input[i];
+        else if (word[word.size() - 1] == '"')
+            parentheses_open = false;
+        
+        if (! parentheses_open)
+            processed_input[i++] += word;
     }
 }
 
