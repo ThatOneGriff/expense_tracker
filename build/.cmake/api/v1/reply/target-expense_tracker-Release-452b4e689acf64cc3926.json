@@ -28,13 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 18,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 19,
+				"line" : 17,
 				"parent" : 0
 			}
 		]
@@ -74,10 +74,6 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "expense::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "helper::@6890427a1f51a3e7e1df"
 		}
 	],
@@ -93,11 +89,6 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "libexpense.a",
-				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,

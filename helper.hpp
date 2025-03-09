@@ -20,6 +20,30 @@ std::string get_date()
 
 
 
+int get_day_of_month()
+{
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d");
+    return stoi(oss.str());
+}
+
+
+bool is_midnight()
+{
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+    
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%H%M");
+
+    return (oss.str() == "0000");
+}
+
+
+
 bool is_num(const std::string& str)
 {
     for (const char& c: str)
@@ -40,7 +64,7 @@ void lower(std::string& str)
 
 
 
-// Тegative numbers in this program are never needed, so minimal return is always 0
+// Negative numbers in this program are never needed, so minimal return is always 0
 int limit(const int target, const int max = __INT_MAX__)
 {
     if (target < 0) return 0;
