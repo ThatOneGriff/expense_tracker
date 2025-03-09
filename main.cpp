@@ -10,39 +10,42 @@ The previous 'month.json' is renamed to '[MONTH_NUMBER].json.
 
 Full data is available for 3 previous months, and each month before that gets transformed: only expense amounts daily. */
 
-// Commands: add, delete, list (week, month (?)), overview (week, month, year, all)
+// Commands: add, delete, list (day, week, month (?)), overview (week, month, year, all)
 
 
-std::string unprocessed_input;
+std::string raw_input;
 const int INPUT_VAR_AMOUNT = 4; // 1 command, 3 args
-std::string processed_input[INPUT_VAR_AMOUNT] = {};
-void process_input();
+std::string input[INPUT_VAR_AMOUNT] = {};
+void distribute_input();
 
 
 int main()
 {
-    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n\n";
+    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
     std::vector<Expense> expenses_month;
 
-    
+
     while(true)
     {
         // cleaning leftover input
         std::cin.clear();
-        std::cout << "> ";
-        getline(std::cin, unprocessed_input);
-        process_input();
-
-        for (int i = 0; i < 4; i++)
-            std::cout << '"' << processed_input[i] << "\"\n";
+        std::cout << "\n> ";
+        getline(std::cin, raw_input);
+        distribute_input();
 
 
-        //if (processed_input[0] == "add")
-        //{
-        //    std::cout << 1;
-        //    Expense new_expense(processed_input[0], stoi(processed_input[1]), stoi(processed_input[2]));
-        //    expenses_month.push_back(new_expense);
-        //}
+        if (input[0] == "add")
+        {
+            // TODO: Empty input, NaN input checks
+            Expense new_expense(input[0], stoi(input[1]), stoi(input[2]));
+            expenses_month.push_back(new_expense);
+        }
+
+
+        else if (input[0] == "list")
+        {
+            
+        }
     }
 
     return 0;
@@ -50,36 +53,38 @@ int main()
 
 
 
-void distribute_unprocessed_input()
-{
-    std::stringstream unprocessed_stream(unprocessed_input);
-    std::string word;
-    bool parentheses_open = false;
-    int i = 0;
-    while (unprocessed_stream >> word && i < 4)
-    {
-        if (word[0] == '"')
-        {
-            parentheses_open = true;
-            processed_input[i] += word;
-            continue;
-        }
-        else if (word[word.size() - 1] == '"')
-            parentheses_open = false;
-        
-        if (! parentheses_open)
-            processed_input[i++] += word;
-    }
-}
-
-
-
-void process_input()
+// I may implement a 50-symbol limit to all words to prevent breaking the program by inputs that are too long.
+// It may mess with a quotation mark check though.
+void distribute_input()
 {
     // cleaning previous input
     for (int i = 0; i < 4; i++)
-        processed_input[i] = "";
+        input[i] = "";
+    
+    std::stringstream input_stream(raw_input);
+    std::string word;
+    bool quote_marks_open = false;
+    int i = 0;
+    while (input_stream >> word && i < 4)
+    {
+        if (word[0] == '"') // start of a multi-word argument [MWA]
+        {
+            quote_marks_open = true;
+            input[i] += word.substr(1, word.size() - 1);
+            continue;
+        }
 
-    // distributing into 4 variables
-    distribute_unprocessed_input();
+        if (quote_marks_open)
+            input[i] += ' ' + word;
+        if (word[word.size() - 1] == '"') // last word in an MWA cascades through the previous 'if' to here
+        {
+            quote_marks_open = false;
+            input[i] = input[i].substr(0, input[i].size() - 1);
+            ++i;
+            continue;
+        }
+        
+        if (! quote_marks_open)
+            input[i++] += word;
+    }
 }

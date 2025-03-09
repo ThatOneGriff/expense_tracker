@@ -1,6 +1,23 @@
 #ifndef HELPER_HPP
 #define HELPER_HPP
 
+#include <iomanip>
+#include <string>
+#include <time.h>
+#include <windows.h>
+
+
+
+std::string get_date()
+{
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d.%m.%Y");
+    return oss.str();
+}
+
 
 
 bool is_num(const std::string& str)
