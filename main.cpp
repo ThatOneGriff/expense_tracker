@@ -19,35 +19,41 @@ IDEA: once a file is fetched, it stays loaded. => a check for being loaded pre-f
 - Find a way to append into the savefile.
 - Implement any improvements you can into 'task_tracker'. */
 
-void clean_input(); // BUGGED
+void clean_input();
 void distribute_input();
 
 
-
 int DAY_OF_MONTH;
+
 std::string raw_input;
+
 const int INPUT_VAR_AMOUNT = 3; // 1 command, 2 args
-std::string input[INPUT_VAR_AMOUNT] = {};
+std::string input[INPUT_VAR_AMOUNT];
+#define command input[0]
+#define arg1    input[1]
+#define arg2    input[2]
 
 
 
 int main()
 {
-    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
+    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===";
+    DAY_OF_MONTH = get_day_of_month();
+
+
     std::unordered_map<int, Daily_Expenses> expenses_by_day;
 
-    DAY_OF_MONTH = get_day_of_month();
 
     while(true)
     {
         clean_input();
-        std::cout << "\n> ";
+        std::cout << "\n\n > ";
         getline(std::cin, raw_input);
         lower(raw_input); // input has no point in being case-sensitive
         distribute_input();
 
 
-        if (input[0] == "add")
+        if (command == "add")
         {
             // This is to not fetch date every time an expense is added,
             // but only at midnight, when dates change.
@@ -56,17 +62,21 @@ int main()
                 DAY_OF_MONTH = get_day_of_month(); // TODO: if month changes
             }
             
-            if (! is_num(input[1]) || ! is_num(input[2]))
+            if (! is_num(arg1) || ! is_num(arg2))
             {
-                continue; // TODO:
+                continue; // TODO
             }
             
-            expenses_by_day[DAY_OF_MONTH].add(stoi(input[1]), limit(stoi(input[2]), 10));
+            expenses_by_day[DAY_OF_MONTH].add(stoi(arg1), limit(stoi(arg2), 10));
         }
 
 
-        std::cout << expenses_by_day[DAY_OF_MONTH].total_expenses << ' ';
-        std::cout << expenses_by_day[DAY_OF_MONTH].avg_urgency;
+        else if (command == "overview")
+        {
+            // TODO: basically the proper function after save/load is done
+
+            
+        }
     }
 
     return 0;
@@ -77,13 +87,13 @@ int main()
 void clean_input()
 {
     std::cin.clear();
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < INPUT_VAR_AMOUNT; i++)
         input[i] = "";
 }
 
 
 
-void distribute_input()
+void distribute_input() // IDEA: carry this over to 'task_tracker'
 {
     std::stringstream input_stream(raw_input);
     int i = 0;

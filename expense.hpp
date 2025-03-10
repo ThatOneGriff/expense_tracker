@@ -7,7 +7,7 @@ class Daily_Expenses
 public:
 
     unsigned int total_expenses = 0;
-    unsigned int avg_urgency = 0;
+    float avg_urgency = 0;
 
     
     void add(const unsigned int expense, const unsigned int urgency)
@@ -17,6 +17,7 @@ public:
         if (amount == 0)
         {
             avg_urgency = urgency;
+            urgency_sum = urgency;
             ++amount;
             return;
         }
