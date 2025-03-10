@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "expense.hpp"
 #include "helper.hpp"
 
 /* = STRUCTURE =
@@ -10,17 +11,17 @@
 Only expense and urgency are saved. Data is stored in identical by structure 'MM_YY.json' files that get fetched if needed.
 IDEA: once a file is fetched, it stays loaded. => a check for being loaded pre-fetch. */
 
-// Commands: add, delete, overview (day, week, month, year, all)
+// Commands: add, overview (day, week, month, year, all), undo (???)
 
 /* ====  TODO:  ====
 - All the new functions in 'helper.hpp' are not tested
-- The new structure of 'expense-urgency' pairs sorted by date is not tested
 - Converting 'unordered_map' into .json
 - Find a way to append into the savefile.
 - Implement any improvements you can into 'task_tracker'. */
 
-void clean_input();
+void clean_input(); // BUGGED
 void distribute_input();
+
 
 
 int DAY_OF_MONTH;
@@ -29,10 +30,11 @@ const int INPUT_VAR_AMOUNT = 3; // 1 command, 2 args
 std::string input[INPUT_VAR_AMOUNT] = {};
 
 
+
 int main()
 {
     std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
-    std::unordered_map<int, std::vector<int[2]>> date_expense_urgency;
+    std::unordered_map<int, Daily_Expenses> expenses_by_day;
 
     DAY_OF_MONTH = get_day_of_month();
 
@@ -58,17 +60,13 @@ int main()
             {
                 continue; // TODO:
             }
-
-            int expense_urgency[2] = {stoi(input[1]), limit(stoi(input[2]), 10)};
-            date_expense_urgency[DAY_OF_MONTH].push_back(expense_urgency);
-            // WARNING: may break
-        }
-
-
-        else if (input[0] == "list")
-        {
             
+            expenses_by_day[DAY_OF_MONTH].add(stoi(input[1]), limit(stoi(input[2]), 10));
         }
+
+
+        std::cout << expenses_by_day[DAY_OF_MONTH].total_expenses << ' ';
+        std::cout << expenses_by_day[DAY_OF_MONTH].avg_urgency;
     }
 
     return 0;
@@ -88,7 +86,11 @@ void clean_input()
 void distribute_input()
 {
     std::stringstream input_stream(raw_input);
-    std::string word;
+    int i = 0;
+
+    while (input_stream >> input[i] && i++ < INPUT_VAR_AMOUNT);
+
+    /*std::string word;
     bool quote_marks_open = false;
     int i = 0;
 
@@ -113,5 +115,5 @@ void distribute_input()
         
         if (! quote_marks_open)
             input[i++] += word;
-    }
+    }*/
 }

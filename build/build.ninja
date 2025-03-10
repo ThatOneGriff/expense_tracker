@@ -41,6 +41,31 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/Àðò¸ì/Documents/pet$ projects/expense_tracker/build/
 # =============================================================================
+# Object build statements for STATIC_LIBRARY target expense
+
+
+#############################################
+# Order-only phony target for expense
+
+build cmake_object_order_depends_target_expense: phony || .
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target expense
+
+
+#############################################
+# Link the static library libexpense.a
+
+build libexpense.a: CXX_STATIC_LIBRARY_LINKER__expense_Release
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+  OBJECT_DIR = CMakeFiles\expense.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libexpense.a
+  TARGET_PDB = expense.a.dbg
+
+# =============================================================================
 # Object build statements for STATIC_LIBRARY target helper
 
 
@@ -72,7 +97,7 @@ build libhelper.a: CXX_STATIC_LIBRARY_LINKER__helper_Release
 #############################################
 # Order-only phony target for expense_tracker
 
-build cmake_object_order_depends_target_expense_tracker: phony || cmake_object_order_depends_target_helper
+build cmake_object_order_depends_target_expense_tracker: phony || cmake_object_order_depends_target_expense cmake_object_order_depends_target_helper
 
 build CMakeFiles/expense_tracker.dir/main.cpp.obj: CXX_COMPILER__expense_tracker_unscanned_Release C$:/Users/Àðò¸ì/Documents/pet$ projects/expense_tracker/main.cpp || cmake_object_order_depends_target_expense_tracker
   DEP_FILE = CMakeFiles\expense_tracker.dir\main.cpp.obj.d
@@ -89,9 +114,9 @@ build CMakeFiles/expense_tracker.dir/main.cpp.obj: CXX_COMPILER__expense_tracker
 #############################################
 # Link the executable expense_tracker.exe
 
-build expense_tracker.exe: CXX_EXECUTABLE_LINKER__expense_tracker_Release CMakeFiles/expense_tracker.dir/main.cpp.obj | libhelper.a || libhelper.a
+build expense_tracker.exe: CXX_EXECUTABLE_LINKER__expense_tracker_Release CMakeFiles/expense_tracker.dir/main.cpp.obj | libexpense.a libhelper.a || libexpense.a libhelper.a
   FLAGS = -O3 -DNDEBUG
-  LINK_LIBRARIES = libhelper.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = libexpense.a  libhelper.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\expense_tracker.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -155,6 +180,8 @@ build include/nlohmann_json/rebuild_cache: phony include/nlohmann_json/CMakeFile
 # =============================================================================
 # Target aliases.
 
+build expense: phony libexpense.a
+
 build expense_tracker: phony expense_tracker.exe
 
 build helper: phony libhelper.a
@@ -167,7 +194,7 @@ build helper: phony libhelper.a
 #############################################
 # Folder: C:/Users/Àðò¸ì/Documents/pet projects/expense_tracker/build
 
-build all: phony libhelper.a expense_tracker.exe include/nlohmann_json/all
+build all: phony libexpense.a libhelper.a expense_tracker.exe include/nlohmann_json/all
 
 # =============================================================================
 
