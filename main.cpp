@@ -41,7 +41,7 @@ int main()
     std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
     DAY_OF_MONTH = get_day_of_month();
 
-    std::unordered_map<int, Daily_Expenses> expenses_by_day = load();
+    std::unordered_map<int, Daily_Expenses> expenses_this_month = load();
 
     while(true)
     {
@@ -66,7 +66,7 @@ int main()
                 continue; // TODO
             }
             
-            expenses_by_day[DAY_OF_MONTH].add(stoi(arg1), limit(stoi(arg2), 10));
+            expenses_this_month[DAY_OF_MONTH].add(stoi(arg1), limit(stoi(arg2), 10));
         }
 
 
@@ -74,21 +74,25 @@ int main()
         {
             // TODO: basically the proper function after save/load is done
             // TODO: day/week/month/year
-            if (expenses_by_day.empty())
+            if (expenses_this_month.empty())
                 continue; // TODO: message
             
             
             std::cout << "\n DAY | AVG--URG | TOTAL\n";
             for (int i = 1; i <= 31; i++)
             {
-                if (expenses_by_day.find(i) == expenses_by_day.end())
+                if (expenses_this_month.find(i) == expenses_this_month.end())
                     continue;
                 
                 std::cout <<    "  " << (i <= 9 ? "0" : "") << i     << " |   " // day formatted to always be 2 characters long
-                          << expenses_by_day[i].formatted_urgency()  << "   | "
-                          <<    expenses_by_day[i].total_expenses    << '\n';
+                          << expenses_this_month[i].formatted_urgency()  << "   | "
+                          <<    expenses_this_month[i].total_expenses    << '\n';
             }
+            
+            continue;
         }
+
+        save(expenses_this_month);
     }
 
     return 0;

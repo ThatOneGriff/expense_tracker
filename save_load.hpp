@@ -66,4 +66,27 @@ std::unordered_map<int, Daily_Expenses> load()
 }
 
 
+
+void save(std::unordered_map<int, Daily_Expenses>& expenses)
+{
+    json data;
+    for (int i = 1; i < 31; i++)
+    {
+        if (expenses.find(i) == expenses.end())
+            continue;
+        
+        Daily_Expenses expense = expenses[i];
+        json element = expense.as_json();
+        if (i == get_day_of_month())
+            element["entry_amount"] = expense.entry_amount; // today's expenses may still need amount
+        // TODO: erasing 'entry_amount' from yesterday's expenses
+        element["day"] = i;
+        data.push_back(element);
+    }
+    std::ofstream file(SAVE_PATH);
+    file << std::setw(4) << data << std::endl;
+    file.close();
+}
+
+
 #endif

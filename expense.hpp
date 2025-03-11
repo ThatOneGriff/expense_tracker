@@ -2,7 +2,9 @@
 #define EXPENSE
 
 #include <math.h>
+#include <nlohmann/json.hpp>
 #include "helper.hpp"
+using json = nlohmann::json;
 
 
 
@@ -42,6 +44,16 @@ public:
     }
 
 
+    json as_json()
+    {
+        json data = {
+            {"total_expenses", total_expenses},
+            {"avg_urgency", avg_urgency}
+        };
+        return data;
+    }
+
+
     std::string formatted_urgency()
     {
         std::string formatted_urgency = cut_float_to(avg_urgency, 0.01);
@@ -66,6 +78,8 @@ private:
     int entry_amount = 0;
     float urgency_sum = 0;
     float avg_urgency = 0;
+
+friend void save(std::unordered_map<int, Daily_Expenses>& expenses);
 };
 
 
