@@ -6,10 +6,11 @@
 #include "date_time.hpp"
 #include "expense.hpp"
 #include "helper.hpp"
+#include "save_load.hpp"
 
 /* = STRUCTURE =
 
-Only expense and urgency are saved. Data is stored in identical by structure 'MM_YY.json' files that get fetched if needed.
+Data is stored in identical by structure 'MM_YY.json's files that get fetched if needed.
 IDEA: once a file is fetched, it stays loaded. => a check for being loaded pre-fetch. */
 
 // Commands: add, overview (day, week, month, year, all), undo (???)
@@ -17,8 +18,7 @@ IDEA: once a file is fetched, it stays loaded. => a check for being loaded pre-f
 /* ====  TODO:  ====
 - All the new functions in 'helper.hpp' are not tested
 - Converting 'unordered_map' into .json
-- Find a way to append into the savefile.
-- Implement any improvements you can into 'task_tracker'. */
+- Find a way to append into the savefile and implement same system into 'task_tracker'. */
 
 void clean_input();
 void distribute_input();
@@ -30,7 +30,6 @@ std::string raw_input;
 
 const int INPUT_VAR_AMOUNT = 3; // 1 command, 2 args
 std::string input[INPUT_VAR_AMOUNT];
-// IDEA: implement into Task_Tracker
 #define command input[0]
 #define arg1    input[1]
 #define arg2    input[2]
@@ -42,7 +41,7 @@ int main()
     std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
     DAY_OF_MONTH = get_day_of_month();
 
-    std::unordered_map<int, Daily_Expenses> expenses_by_day;
+    std::unordered_map<int, Daily_Expenses> expenses_by_day = load();
 
     while(true)
     {
@@ -106,37 +105,10 @@ void clean_input()
 
 
 
-void distribute_input() // IDEA: carry this over to 'task_tracker'
+void distribute_input()
 {
     std::stringstream input_stream(raw_input);
     int i = 0;
 
     while (input_stream >> input[i] && i++ < INPUT_VAR_AMOUNT);
-
-    /*std::string word;
-    bool quote_marks_open = false;
-    int i = 0;
-
-    while (input_stream >> word && i < 4)
-    {
-        if (word[0] == '"') // start of a multi-word argument [MWA]
-        {
-            quote_marks_open = true;
-            input[i] += word.substr(1, word.size() - 1);
-            continue;
-        }
-
-        if (quote_marks_open)
-            input[i] += ' ' + word;
-        if (word[word.size() - 1] == '"') // last word in an MWA cascades through the previous 'if' to here
-        {
-            quote_marks_open = false;
-            input[i] = input[i].substr(0, input[i].size() - 1);
-            ++i;
-            continue;
-        }
-        
-        if (! quote_marks_open)
-            input[i++] += word;
-    }*/
 }

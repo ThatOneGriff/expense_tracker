@@ -7,8 +7,7 @@
 
 // TODO: month lengths; IDEA: month names?
 
-// WARNING: leap years not accounted for
-// Might not even be all that useful
+// WARNING: leap years not accounted for; the array below might not even be all that useful.
 //const int MONTH_LENGTHS[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 

@@ -12,9 +12,21 @@ public:
 
     unsigned int total_expenses = 0;
 
+
+    Daily_Expenses(const unsigned int _total_expenses, const float _avg_urgency, const int _entry_amount = -1)
+    : total_expenses(_total_expenses), avg_urgency(_avg_urgency), entry_amount(_entry_amount)
+    {}
+
     
     void add(const unsigned int expense, const unsigned int urgency)
     {
+        // Basically, only today's expenses have their amount saved.
+        // And you can't edit yesterday's expenses. IDEA: add expense at certain dates?
+        if (entry_amount == -1)
+        {
+            return; // TODO: message
+        }
+
         total_expenses += expense;
         
         if (entry_amount == 0)
@@ -51,7 +63,7 @@ public:
 
 private:
 
-    unsigned int entry_amount = 0;
+    int entry_amount = 0;
     float urgency_sum = 0;
     float avg_urgency = 0;
 };

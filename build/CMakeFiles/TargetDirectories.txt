@@ -1,6 +1,7 @@
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/date_time.dir
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/expense.dir
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/helper.dir
+C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/save_load.dir
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/expense_tracker.dir
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/edit_cache.dir
 C:/Users/Артём/Documents/pet projects/expense_tracker/build/CMakeFiles/rebuild_cache.dir
