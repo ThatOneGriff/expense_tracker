@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "date_time.hpp"
 #include "expense.hpp"
 #include "helper.hpp"
 
@@ -29,6 +30,7 @@ std::string raw_input;
 
 const int INPUT_VAR_AMOUNT = 3; // 1 command, 2 args
 std::string input[INPUT_VAR_AMOUNT];
+// IDEA: implement into Task_Tracker
 #define command input[0]
 #define arg1    input[1]
 #define arg2    input[2]
@@ -37,17 +39,15 @@ std::string input[INPUT_VAR_AMOUNT];
 
 int main()
 {
-    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===";
+    std::cout << " === Expense Tracker v0.0.1 (type 'help' to list all commands) ===\n";
     DAY_OF_MONTH = get_day_of_month();
 
-
     std::unordered_map<int, Daily_Expenses> expenses_by_day;
-
 
     while(true)
     {
         clean_input();
-        std::cout << "\n\n > ";
+        std::cout << "\n > ";
         getline(std::cin, raw_input);
         lower(raw_input); // input has no point in being case-sensitive
         distribute_input();
@@ -74,8 +74,21 @@ int main()
         else if (command == "overview")
         {
             // TODO: basically the proper function after save/load is done
-
+            // TODO: day/week/month/year
+            if (expenses_by_day.empty())
+                continue; // TODO: message
             
+            
+            std::cout << "\n DAY | AVG--URG | TOTAL\n";
+            for (int i = 1; i <= 31; i++)
+            {
+                if (expenses_by_day.find(i) == expenses_by_day.end())
+                    continue;
+                
+                std::cout <<    "  " << (i <= 9 ? "0" : "") << i     << " |   " // day formatted to always be 2 characters long
+                          << expenses_by_day[i].formatted_urgency()  << "   | "
+                          <<    expenses_by_day[i].total_expenses    << '\n';
+            }
         }
     }
 

@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "libhelper.a"
+			"path" : "libexpense.a"
 		}
 	],
 	"backtrace" : 1,
@@ -30,9 +30,9 @@
 			}
 		]
 	},
-	"id" : "helper::@6890427a1f51a3e7e1df",
-	"name" : "helper",
-	"nameOnDisk" : "libhelper.a",
+	"id" : "expense::@6890427a1f51a3e7e1df",
+	"name" : "expense",
+	"nameOnDisk" : "libexpense.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -52,7 +52,7 @@
 	[
 		{
 			"backtrace" : 1,
-			"path" : "helper.hpp",
+			"path" : "expense.hpp",
 			"sourceGroupIndex" : 0
 		}
 	],

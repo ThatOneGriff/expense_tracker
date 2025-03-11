@@ -1,45 +1,16 @@
-#ifndef HELPER_HPP
-#define HELPER_HPP
+#ifndef HELPER
+#define HELPER
 
-#include <iomanip>
-#include <string>
-#include <time.h>
-#include <windows.h>
+#include <math.h>
 
 
-
-std::string get_date()
+std::string cut_float_to(const float target, const float target_view)
 {
-    auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
+    std::string result = std::to_string(target);
+    int places_after_pt = -log10(target_view); // 0.1 => 1 etc
+    int cutoff_place = result.find('.') + places_after_pt;
 
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%d.%m.%Y");
-    return oss.str();
-}
-
-
-
-int get_day_of_month()
-{
-    auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
-
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%d");
-    return stoi(oss.str());
-}
-
-
-bool is_midnight()
-{
-    auto t = std::time(nullptr);
-    auto tm = *std::localtime(&t);
-    
-    std::ostringstream oss;
-    oss << std::put_time(&tm, "%H%M");
-
-    return (oss.str() == "0000");
+    return result.substr(0, cutoff_place);
 }
 
 
@@ -65,7 +36,7 @@ void lower(std::string& str)
 
 
 // Negative numbers in this program are never needed, so minimal return is always 0
-int limit(const int target, const int max = __INT_MAX__)
+int limit(const unsigned int target, const unsigned int max)
 {
     if (target < 0) return 0;
     if (target > max) return max;

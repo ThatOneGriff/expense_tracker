@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "libexpense.a"
+			"path" : "libdate_time.a"
 		}
 	],
 	"backtrace" : 1,
@@ -30,9 +30,9 @@
 			}
 		]
 	},
-	"id" : "expense::@6890427a1f51a3e7e1df",
-	"name" : "expense",
-	"nameOnDisk" : "libexpense.a",
+	"id" : "date_time::@6890427a1f51a3e7e1df",
+	"name" : "date_time",
+	"nameOnDisk" : "libdate_time.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -52,7 +52,7 @@
 	[
 		{
 			"backtrace" : 1,
-			"path" : "expense.hpp",
+			"path" : "date_time.hpp",
 			"sourceGroupIndex" : 0
 		}
 	],
